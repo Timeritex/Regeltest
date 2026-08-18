@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Handball Regelfragen-Test</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="app-header">
+    <h1>🤾 Handball Regelfragen-Test</h1>
+    <p>Teste dein Wissen über die offiziellen Handballregeln</p>
+  </header>
+
+  <main>
+    <section id="start-screen" class="card">
+      <h2>Bereit für den Test?</h2>
+      <p>Beantworte Multiple-Choice-Fragen zu Spielfeld, Zeitregeln, Fouls, Torwartregeln und mehr.</p>
+
+      <form id="start-form">
+        <div class="field-group">
+          <label for="question-count">Anzahl der Fragen</label>
+          <select id="question-count">
+            <option value="10">10 Fragen (kurz)</option>
+            <option value="20" selected>20 Fragen (mittel)</option>
+            <option value="all">Alle Fragen</option>
+          </select>
+        </div>
+        <button type="submit" class="primary-btn">Test starten</button>
+      </form>
+
+      <div class="info-box">
+        Nach jeder Antwort erhältst du direkt Feedback samt kurzer Erklärung zur Regel. Am Ende siehst du deine Punktzahl und alle falsch beantworteten Fragen zum Nacharbeiten.
+      </div>
+    </section>
+
+    <section id="quiz-screen" class="card hidden">
+      <div class="quiz-meta">
+        <span id="progress-label">Frage 1 / 10</span>
+        <span id="score-label">Punkte: 0</span>
+      </div>
+      <div class="progress-track">
+        <div id="progress-bar" class="progress-fill"></div>
+      </div>
+
+      <span id="category-label" class="category-tag">Kategorie</span>
+      <h2 id="question-text">Frage</h2>
+
+      <ul id="answers-list"></ul>
+
+      <div id="feedback" class="feedback"></div>
+
+      <div class="quiz-actions">
+        <button id="quit-button" class="secondary-btn" type="button">Test beenden</button>
+        <button id="next-button" class="primary-btn" type="button" disabled>Weiter</button>
+      </div>
+    </section>
+
+    <section id="result-screen" class="card hidden">
+      <h2>Ergebnis</h2>
+      <div id="result-summary"></div>
+      <div id="result-review"></div>
+      <button id="restart-button" class="primary-btn" type="button">Neuen Test starten</button>
+    </section>
+  </main>
+
+  <footer>
+    Regelbasis in Anlehnung an die IHF/DHB-Spielregeln &middot; Ohne Gewähr, dient der Lernunterstützung.
+  </footer>
+
+  <script src="questions.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
