@@ -4,33 +4,75 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Handball Regelfragen-Test</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Source+Sans+3:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+  <div class="whistle-strip" aria-hidden="true"></div>
+
   <header class="app-header">
-    <h1>🤾 Handball Regelfragen-Test</h1>
-    <p>Teste dein Wissen über die offiziellen Handballregeln</p>
+    <p class="eyebrow">DHB-Regelfragenkatalog &middot; Stand 01.2026</p>
+    <h1>Handball Regelfragen-Test</h1>
+    <p class="subhead">432 offizielle Prüfungsfragen &middot; Mehrfachauswahl wie im echten Schiedsrichter-Test</p>
   </header>
 
   <main>
     <section id="start-screen" class="card">
-      <h2>Bereit für den Test?</h2>
-      <p>Beantworte Multiple-Choice-Fragen zu Spielfeld, Zeitregeln, Fouls, Torwartregeln und mehr.</p>
+      <h2>Bereit für den Pfiff?</h2>
+      <p class="lede">
+        Jede Frage kann eine oder mehrere richtige Antworten haben &ndash; genau wie im
+        offiziellen Regelfragenkatalog. Wähle vorher aus, wie viel du üben möchtest.
+      </p>
 
       <form id="start-form">
-        <div class="field-group">
+        <div class="mode-switch" role="radiogroup" aria-label="Testmodus">
+          <label class="mode-option">
+            <input type="radio" name="mode" value="random" checked />
+            <span class="mode-card">
+              <span class="mode-title">Zufällige Auswahl</span>
+              <span class="mode-desc">Gemischte Fragen aus allen Kapiteln</span>
+            </span>
+          </label>
+          <label class="mode-option">
+            <input type="radio" name="mode" value="section" />
+            <span class="mode-card">
+              <span class="mode-title">Ein Kapitel üben</span>
+              <span class="mode-desc">Gezielt ein Regelthema durchgehen</span>
+            </span>
+          </label>
+          <label class="mode-option">
+            <input type="radio" name="mode" value="all" />
+            <span class="mode-card">
+              <span class="mode-title">Alle 432 Fragen</span>
+              <span class="mode-desc">Der komplette Katalog am Stück</span>
+            </span>
+          </label>
+        </div>
+
+        <div class="field-group" id="random-count-group">
           <label for="question-count">Anzahl der Fragen</label>
           <select id="question-count">
-            <option value="10">10 Fragen (kurz)</option>
-            <option value="20" selected>20 Fragen (mittel)</option>
-            <option value="all">Alle Fragen</option>
+            <option value="10">10 Fragen &ndash; kurzer Check</option>
+            <option value="20" selected>20 Fragen &ndash; mittlere Runde</option>
+            <option value="50">50 Fragen &ndash; ausführliches Training</option>
           </select>
         </div>
+
+        <div class="field-group hidden" id="section-group">
+          <label for="section-select">Kapitel</label>
+          <select id="section-select"></select>
+        </div>
+
         <button type="submit" class="primary-btn">Test starten</button>
       </form>
 
       <div class="info-box">
-        Nach jeder Antwort erhältst du direkt Feedback samt kurzer Erklärung zur Regel. Am Ende siehst du deine Punktzahl und alle falsch beantworteten Fragen zum Nacharbeiten.
+        <strong>So wird bewertet:</strong> Setze Häkchen bei allen zutreffenden Antworten und bestätige
+        mit &bdquo;Antwort bestätigen&ldquo;. Eine Frage zählt nur als richtig, wenn deine Auswahl exakt der
+        amtlichen Lösung entspricht &ndash; wie im echten Schiedsrichter-Test. Danach siehst du Frage&#8209;Nr.
+        und Regelbezug als Quellenangabe, ohne erklärenden Fließtext.
       </div>
     </section>
 
@@ -45,14 +87,17 @@
 
       <span id="category-label" class="category-tag">Kategorie</span>
       <h2 id="question-text">Frage</h2>
+      <p class="select-hint">Wähle alle zutreffenden Antworten aus.</p>
 
       <ul id="answers-list"></ul>
 
-      <div id="feedback" class="feedback"></div>
+      <div id="reference-line" class="reference-line hidden"></div>
+      <div id="result-banner" class="result-banner hidden"></div>
 
       <div class="quiz-actions">
         <button id="quit-button" class="secondary-btn" type="button">Test beenden</button>
-        <button id="next-button" class="primary-btn" type="button" disabled>Weiter</button>
+        <button id="submit-button" class="primary-btn" type="button">Antwort bestätigen</button>
+        <button id="next-button" class="primary-btn hidden" type="button">Weiter</button>
       </div>
     </section>
 
@@ -65,7 +110,8 @@
   </main>
 
   <footer>
-    Regelbasis in Anlehnung an die IHF/DHB-Spielregeln &middot; Ohne Gewähr, dient der Lernunterstützung.
+    Fragen &amp; Antworten aus dem offiziellen DHB-Regelfragenkatalog, Stand 01.2026 &middot;
+    Regelbezüge dienen als Quellenangabe, nicht als Erklärung &middot; Ohne Gewähr, dient der Lernunterstützung.
   </footer>
 
   <script src="questions.js"></script>
