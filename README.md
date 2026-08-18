@@ -18,11 +18,30 @@ und danach `http://localhost:8000` aufrufen.
 
 Auf dem Startbildschirm wählst du zwischen drei Modi:
 
-- **Zufällige Auswahl** – 10, 20 oder 50 gemischte Fragen aus dem gesamten Katalog
+- **Zufällige Auswahl** – 10, 20, 30 oder 50 gemischte Fragen aus dem gesamten Katalog
 - **Ein Kapitel üben** – gezielt eines der 19 Kapitel (Spielfläche, Zeitregeln,
   Persönliche Strafen, 7-Meter-Wurf, Auswechselraum-Reglement usw.) mit der
   jeweiligen Fragenanzahl im Dropdown
 - **Alle 432 Fragen** – der komplette Katalog am Stück
+
+## Als App installieren (PWA)
+
+Die App ist eine installierbare Progressive Web App – kein separates `.apk`
+nötig, funktioniert aber wie eine native App:
+
+1. Die Seite auf dem Handy im Browser öffnen (z. B. über einen selbst
+   gehosteten Link, siehe „Nutzung“ oben; ein lokales `file://`-Öffnen reicht
+   für die Installation nicht, es braucht `http(s)://`).
+2. In Chrome (Android) über das Menü **„Zum Startbildschirm hinzufügen“** bzw.
+   **„App installieren“** wählen, in Safari (iOS) über **Teilen → Zum
+   Home-Bildschirm**.
+3. Die App landet als eigenes Icon auf dem Startbildschirm, startet im
+   Vollbild ohne Browserleiste und funktioniert danach **komplett offline**
+   (Service Worker cached alle 432 Fragen inkl. Antworten lokal auf dem
+   Gerät).
+
+Icons liegen unter `icons/`, Manifest ist `manifest.webmanifest`, Offline-
+Caching übernimmt `sw.js`.
 
 ## Prüfungsmechanik
 
@@ -46,11 +65,13 @@ keine Begründungen liefert.
 ## Funktionen
 
 - Vollständiger Fragenkatalog (432 Fragen, Mehrfachauswahl, amtliche Lösungen)
-- Drei Startmodi: Zufallsauswahl, einzelnes Kapitel, kompletter Katalog
+- Drei Startmodi: Zufallsauswahl (10/20/30/50), einzelnes Kapitel, kompletter Katalog
 - Fortschrittsanzeige und laufender Punktestand
 - Abschlussauswertung mit Prozentwertung und Liste aller falsch beantworteten
   Fragen (inkl. Fragen-Nr., korrekter Antworten und Regelbezug) zum Nacharbeiten
-- Responsive, dependency-freies Vanilla-HTML/CSS/JS ohne Build-Schritt
+- Installierbar als PWA, läuft danach komplett offline
+- Responsive, dependency-freies Vanilla-HTML/CSS/JS ohne Build-Schritt, keine
+  externen Font-/CDN-Abhängigkeiten
 
 ## Struktur
 
@@ -58,6 +79,9 @@ keine Begründungen liefert.
 - `style.css` – Styling (Light/Dark, responsive)
 - `questions.js` – vollständiger Fragenkatalog inkl. Antworten und Regelbezügen
 - `script.js` – Quiz-Logik (Mehrfachauswahl-Bewertung, Modi, Auswertung)
+- `manifest.webmanifest` – PWA-Manifest (Name, Icons, Startmodus)
+- `sw.js` – Service Worker für Offline-Caching
+- `icons/` – App-Icons (192/512/512-maskable/Apple-Touch-Icon/Favicon)
 
 ## Quelle
 

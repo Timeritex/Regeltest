@@ -1,0 +1,33 @@
+{
+  "name": "Handball Regelfragen-Test",
+  "short_name": "Regeltest",
+  "description": "Offizieller DHB-Regelfragenkatalog (Stand 01.2026) als installierbare Übungs-App.",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#0f1621",
+  "theme_color": "#17518f",
+  "lang": "de",
+  "dir": "ltr",
+  "icons": [
+    {
+      "src": "icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/icon-512-maskable.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}
