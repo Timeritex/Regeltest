@@ -1,6 +1,23 @@
 (function () {
   "use strict";
 
+  try {
+    init();
+  } catch (err) {
+    console.error("Handball-Quiz: Initialisierung fehlgeschlagen", err);
+    const start = document.getElementById("start-screen");
+    if (start) {
+      const box = document.createElement("div");
+      box.style.cssText = "margin-top:1rem;padding:1rem;border-radius:10px;background:#fdecec;color:#8a231e;font-size:0.9rem;";
+      box.textContent =
+        "Die App konnte nicht gestartet werden (Skriptfehler: " + (err && err.message ? err.message : err) +
+        "). Bitte Seite neu laden. Falls das Problem bestehen bleibt, ist evtl. questions.js nicht geladen.";
+      start.appendChild(box);
+    }
+  }
+
+  function init() {
+
   const SECTION_ORDER = ["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","ARR"];
 
   const startScreen = document.getElementById("start-screen");
@@ -315,4 +332,6 @@
   restartButton.addEventListener("click", () => {
     showScreen(startScreen);
   });
+
+  } // end init()
 })();
